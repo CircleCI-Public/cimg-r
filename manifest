@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+repository=r
+parent=base
+variants=()
+namespace=cimg

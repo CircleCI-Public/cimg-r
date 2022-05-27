@@ -1,0 +1,12 @@
+version: 2.1
+
+orbs:
+  sonar: hubci/sonar@1.0.0
+  cimg-orb: circleci/cimg-orb@0.1.4
+
+workflows:
+  main:
+    jobs:
+      - cimg-orb/build-and-deploy:
+          image: cimg/r
+          context: cimg-publishing

@@ -1,0 +1,48 @@
+# vim:set ft=dockerfile:
+
+# Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
+
+FROM cimg/%%PARENT%%:2022.04
+
+LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
+
+ENV R_VERSION="%%VERSION_FULL%%"
+
+LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
+
+# Additional info https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html
+
+# Add necessary sources
+RUN echo "deb http://mirror.math.princeton.edu/pub/ubuntu/ focal-backports main restricted universe" | sudo tee -a /etc/apt/sources.list && \
+      curl https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
+      sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
+      sudo add-apt-repository --enable-source --yes "ppa:marutter/rrutter4.0" && \
+      sudo add-apt-repository --enable-source --yes "ppa:c2d4u.team/c2d4u4.0+"
+
+# Install packages needed for R
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+      libopenblas0-pthread \
+      ed \
+      dirmngr \
+      less \
+      locales \
+      fonts-texgyre \
+      r-base=${R_VERSION}-* \
+      r-base-dev=${R_VERSION}-* \
+      r-recommended=${R_VERSION}-* \
+      r-cran-docopt \
+      r-cran-littler \
+      littler && \
+      sudo rm -rf /var/lib/apt/lists/*
+      
+# link example scripts to PATH
+RUN sudo ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin/install.r && \
+      sudo ln -s /usr/lib/R/site-library/littler/examples/install2.r /usr/local/bin/install2.r && \
+      sudo ln -s /usr/lib/R/site-library/littler/examples/installBioc.r /usr/local/bin/installBioc.r && \
+      sudo ln -s /usr/lib/R/site-library/littler/examples/installDeps.r /usr/local/bin/installDeps.r && \
+      sudo ln -s /usr/lib/R/site-library/littler/examples/installGithub.r /usr/local/bin/installGithub.r && \
+      sudo ln -s /usr/lib/R/site-library/littler/examples/testInstalled.r /usr/local/bin/testInstalled.r && \
+      sudo chmod +x /usr/lib/R/site-library/littler/examples/ && \
+      sudo chmod a+w /usr/local/lib/R/site-library
+
+
