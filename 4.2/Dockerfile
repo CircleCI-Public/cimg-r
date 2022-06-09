@@ -2,11 +2,11 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-FROM cimg/%%PARENT%%:2022.04
+FROM cimg/base:2022.04
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV R_VERSION="%%VERSION_FULL%%"
+ENV R_VERSION="4.2.0"
 ENV R_HOME=/usr/local/lib/R
 # Define number of parallel processing cores
 ENV NCPUS=${NCPUS:--1}
@@ -97,7 +97,7 @@ RUN sudo ln -s /usr/lib/R/site-library/littler/examples/install.r /usr/local/bin
       sudo chmod a+w /usr/local/lib/R/site-library
 
 RUN install2.r --error --skipinstalled -n "$NCPUS" \
-    # tidyverse here includes code packagees like dplyr and ggplot2
+    # tidyverse here includes code packaes like dplyr and ggplot2
     bigrquery \
     devtools \
     RMariaDB \
