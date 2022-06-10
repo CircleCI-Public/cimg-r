@@ -8,7 +8,7 @@
 	<h3>A Continous Integration focused R Docker image built to run on CircleCI</h3>
 </div>
 
-[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-r.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-r) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-r/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/node)](https://hub.docker.com/r/cimg/r) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images) [![Repository](https://img.shields.io/badge/github-README-brightgreen)](https://github.com/CircleCI-Public/cimg-r)
+[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-r.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-r) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-r/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/R)](https://hub.docker.com/r/cimg/r) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images) [![Repository](https://img.shields.io/badge/github-README-brightgreen)](https://github.com/CircleCI-Public/cimg-r)
 
 **_This image is currently in ALPHA development stages and should not be used in production._**
 
@@ -64,7 +64,7 @@ however, there are four candidates that are being considered:
 This image has the following tagging scheme:
 
 ```text
-cimg/node:<R-version>
+cimg/R:<R-version>
 ```
 
 ## Development
@@ -168,14 +168,14 @@ git add shared
 git commit -m "Updating submodule for foo."
 ```
 
-**parent image** - By design, when changes happen to a parent image, they don't appear in existing Node.js images.
+**parent image** - By design, when changes happen to a parent image, they don't appear in existing R images.
 This is to aid in "determinism" and prevent breaking customer builds.
-New Node.js images will automatically pick up the changes.
+New R images will automatically pick up the changes.
 
-If you _really_ want to publish changes from a parent image into the Node.js image, you have to build a specific image version as if it was a new image.
+If you _really_ want to publish changes from a parent image into the R image, you have to build a specific image version as if it was a new image.
 This will create a new Dockerfile and once published, a new image.
 
-**Node specific changes** - Editing the `Dockerfile.template` file in this repo is how to modify the Node.js image specifically.
+**R specific changes** - Editing the `Dockerfile.template` file in this repo is how to modify the R image specifically.
 Don't forget that to see any of these changes locally, the `gen-dockerfiles.sh` script will need to be run again (see above).
 
 ## Contributing
