@@ -6,7 +6,7 @@ FROM cimg/base:2022.06
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV R_VERSION="4.2.0"
+ENV R_VERSION="4.1.3"
 ENV UBUNTU_VERSION=2004
 ENV CRAN=https://packagemanager.rstudio.com/cran/__linux__/focal/latest
 
