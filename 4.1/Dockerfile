@@ -2,11 +2,11 @@
 
 # Do not edit individual Dockerfiles manually. Instead, please make changes to the Dockerfile.template, which will be used by the build script to generate Dockerfiles.
 
-FROM cimg/%%PARENT%%:2022.06
+FROM cimg/base:2022.06
 
 LABEL maintainer="Community & Partner Engineering Team <community-partner@circleci.com>"
 
-ENV R_VERSION="%%VERSION_FULL%%"
+ENV R_VERSION="4.1.3"
 ENV UBUNTU_VERSION=2004
 ENV CRAN=https://packagemanager.rstudio.com/cran/__linux__/focal/latest
 
