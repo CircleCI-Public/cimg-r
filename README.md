@@ -1,20 +1,20 @@
 <div align="center">
 	<p>
-		<img alt="CircleCI Logo" src="https://raw.github.com/CircleCI-Public/cimg-r/main/img/circle-circleci.svg?sanitize=true" width="75" />
-		<img alt="Docker Logo" src="https://raw.github.com/CircleCI-Public/cimg-r/main/img/circle-docker.svg?sanitize=true" width="75" />
-		<img alt="R Logo" src="https://raw.github.com/CircleCI-Public/cimg-r/main/img/circle-r.svg?sanitize=true" width="75" />
+		<img alt="CircleCI Logo" src="https://raw.github.com/CircleCI-Public/cimg-rlang/main/img/circle-circleci.svg?sanitize=true" width="75" />
+		<img alt="Docker Logo" src="https://raw.github.com/CircleCI-Public/cimg-rlang/main/img/circle-docker.svg?sanitize=true" width="75" />
+		<img alt="R Logo" src="https://raw.github.com/CircleCI-Public/cimg-rlang/main/img/circle-r.svg?sanitize=true" width="75" />
 	</p>
 	<h1>CircleCI Convenience Images => R Lang</h1>
 	<h3>A Continous Integration focused R Docker image built to run on CircleCI</h3>
 </div>
 
-[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-r.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-r) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-r/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/R)](https://hub.docker.com/r/cimg/r) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images) [![Repository](https://img.shields.io/badge/github-README-brightgreen)](https://github.com/CircleCI-Public/cimg-r)
+[![CircleCI Build Status](https://circleci.com/gh/CircleCI-Public/cimg-rlang.svg?style=shield)](https://circleci.com/gh/CircleCI-Public/cimg-rlang) [![Software License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CircleCI-Public/cimg-rlang/main/LICENSE) [![Docker Pulls](https://img.shields.io/docker/pulls/cimg/rlang)](https://hub.docker.com/r/cimg/rlang) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/circleci-images) [![Repository](https://img.shields.io/badge/github-README-brightgreen)](https://github.com/CircleCI-Public/cimg-rlang)
 
 **_This image is currently in ALPHA development stages and should not be used in production._**
 
 **As such, we would love to get your thoughts and feedback on packages to include which can aid you in your developer experience. Please see the `contributing` section of the README for additional details on what this should look like and what we would like to see as considerations for inclusion within this image**
 
-`cimg/r` is a Docker image created by CircleCI with continuous integration builds in mind.
+`cimg/rlang` is a Docker image created by CircleCI with continuous integration builds in mind.
 Each tag contains a version of R, `littler`, `docopt`, and any binaries and tools that are required for builds to complete successfully in a CircleCI environment.
 
 ## Table of Contents
@@ -35,7 +35,7 @@ For example:
 jobs:
   build:
     docker:
-      - image: cimg/r:4.2.0
+      - image: cimg/rlang:4.2.0
     steps:
       - checkout
       - run: R --version
@@ -54,6 +54,7 @@ You can also install R packages using `install.packages()` or `install(2).r`
 
 Variant images typically contain the same base software, but with a few additional modifications. As of now, no variants exist,
 however, there are four candidates that are being considered:
+
 - tidyverse
 - geospatial
 - binder
@@ -64,7 +65,7 @@ however, there are four candidates that are being considered:
 This image has the following tagging scheme:
 
 ```text
-cimg/R:<R-version>
+cimg/rlang:<R-version>
 ```
 
 ## Development
@@ -90,7 +91,7 @@ If you missed this step and already cloned, you can just run `git submodule upda
 Then you can optionally add this repo as an upstream to your own:
 
 ```bash
-git remote add upstream https://github.com/CircleCI-Public/cimg-r.git
+git remote add upstream https://github.com/CircleCI-Public/cimg-rlang.git
 ```
 
 ### Cloning For Maintainers ( you have write access to this repository)
@@ -98,7 +99,7 @@ git remote add upstream https://github.com/CircleCI-Public/cimg-r.git
 Clone the project with the following command so that you populate the submodule:
 
 ```bash
-git clone --recurse-submodules git@github.com:CircleCI-Public/cimg-r.git
+git clone --recurse-submodules git@github.com:CircleCI-Public/cimg-rlang.git
 ```
 
 ### Generating Dockerfiles
@@ -180,7 +181,7 @@ Don't forget that to see any of these changes locally, the `gen-dockerfiles.sh` 
 
 ## Contributing
 
-We encourage [issues](https://github.com/CircleCI-Public/cimg-r/issues) to and [pull requests](https://github.com/CircleCI-Public/cimg-r/pulls) against this repository however, in order to value your time, here are some things to consider:
+We encourage [issues](https://github.com/CircleCI-Public/cimg-rlang/issues) to and [pull requests](https://github.com/CircleCI-Public/cimg-rlang/pulls) against this repository however, in order to value your time, here are some things to consider:
 
 1. We won't include just anything in this image. In order for us to add a tool within the R image, it has to be something that is maintained and useful to a large number of R developers. Every tool added makes the image larger and slower for all users so being thorough on what goes in the image will benefit everyone. While there are exceptions, and we can certainly work with you on creating a potential variant, the general rule of thumb for including a tool that at least 80% of users will use..
 1. PRs are welcome. If you have a PR that will potentially take a large amount of time to make, it will be better to open an issue to discuss it first to make sure it's something worth investing the time in.
