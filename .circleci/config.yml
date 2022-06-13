@@ -8,5 +8,5 @@ workflows:
   main:
     jobs:
       - cimg-orb/build-and-deploy:
-          image: cimg/r
+          image: cimg/rlang
           context: cimg-publishing
